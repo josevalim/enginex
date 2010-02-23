@@ -1,5 +1,6 @@
 require "thor/group"
 require "active_support"
+require "active_support/version"
 require "active_support/core_ext/string"
 
 class Enginex < Thor::Group
@@ -23,24 +24,27 @@ class Enginex < Thor::Group
 
   def create_root
     self.destination_root = File.expand_path(path, destination_root)
-    set_name!
+    set_accessors!
 
-    empty_directory "."
+    directory "root", "."
     FileUtils.cd(destination_root)
   end
 
-  def copy_root_files
-    directory "root", "."
-  end
-
-  
-
   protected
+
+    def bare?
+      options.bare?
+    end
+
+    # Cache accessors since we are changing the directory
+    def set_accessors!
+      self.name
+      self.class.source_root
+    end
 
     def name
       @name ||= File.basename(destination_root)
     end
-    alias :set_name! :name
 
     def camelized
       @camelized ||= name.camelize
