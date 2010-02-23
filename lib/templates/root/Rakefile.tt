@@ -1,0 +1,32 @@
+# encoding: UTF-8
+require 'rake'
+require 'rake/testtask'
+require 'rake/rdoctask'
+
+desc 'Run <%= camelized %> unit tests.'
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'lib'
+  t.libs << 'test'
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = true
+end
+
+desc 'Generate documentation for <%= camelized %>.'
+Rake::RDocTask.new(:rdoc) do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title    = '<%= camelized %>'
+  rdoc.options << '--line-numbers' << '--inline-source'
+  rdoc.rdoc_files.include('README.rdoc')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+spec = Gem::Specification.new do |s|
+  s.name = "<%= underscored %>"
+  s.summary = "Insert <%= camelized %> summary."
+  s.description = "Insert <%= camelized %> description."
+  s.files =  FileList["[A-Z]*", "lib/**/*"]
+  s.version = "0.0.1"
+end
+
+desc 'Package <%= camelized %>'
+Rake::GemPackageTask.new(spec)

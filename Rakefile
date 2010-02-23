@@ -26,19 +26,20 @@ begin
   Jeweler::Tasks.new do |s|
     s.name = "enginex"
     s.version = Enginex::VERSION
-    s.summary = "Creates a Rails 3 engine with running tests"
+    s.summary = "Creates a Rails 3 engine with Rakefile, Gemfile and running tests"
     s.email = "jose.valim@plataformatec.com.br"
     s.homepage = "http://github.com/josevalim/enginex"
-    s.description = "Creates a Rails 3 engine with running tests"
-    s.authors = ['José Valim', 'Carlos Antônio']
+    s.description = "Creates a Rails 3 engine with Rakefile, Gemfile and running tests"
+    s.authors = ['José Valim']
     s.files =  FileList["[A-Z]*", "lib/**/*"]
     s.bindir = "bin"
     s.executables = %w(enginex)
     s.add_dependency("thor", "~> 0.13.0")
     s.add_dependency("rails", "~> 3.0.0")
+    s.add_dependency("rake", "~> 0.8")
   end
 
   Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler, or one of its dependencies, is not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+  puts "Jeweler, or one of its dependencies, is not available. Install it with: sudo gem install jeweler"
 end
