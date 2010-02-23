@@ -6,6 +6,8 @@ require "active_support/core_ext/string"
 require "rails/generators"
 require "generators/rails/app/app_generator"
 
+# TODO Remove webrat hack file
+# TODO Remove Rails 3 application hack
 class Enginex < Thor::Group
   VERSION = "0.1.0".freeze
 
@@ -16,15 +18,23 @@ class Enginex < Thor::Group
     @_source_root ||= File.expand_path('../templates', __FILE__)
   end
 
+  def self.say_step(message)
+    @step = (@step || 0) + 1
+    class_eval <<-METHOD, __FILE__, __LINE__ + 1
+      def step_#{@step}
+        #{"puts" if @step > 1}
+        say_status "STEP #{@step}", #{message.inspect}
+      end
+    METHOD
+  end
+
   argument :path, :type => :string,
                   :desc => "Path to the engine to be created"
 
   class_option :help, :type => :boolean, :aliases => "-h",
                       :desc => "Show this help message and quit"
 
-  def step_1
-    say_status "STEP 1", "Creating engine skeleton"
-  end
+  say_step "Creating engine skeleton"
 
   def create_root
     self.destination_root = File.expand_path(path, destination_root)
@@ -38,20 +48,14 @@ class Enginex < Thor::Group
     copy_file "gitignore", ".gitignore"
   end
 
-  def step_2
-    puts
-    say_status "STEP 2", "Vendoring Rails application at test/dummy"
-  end
+  say_step "Vendoring Rails application at test/dummy"
 
   def invoke_rails_app_generator
     invoke Rails::Generators::AppGenerator,
       [ File.expand_path("test/dummy", destination_root) ]
   end
 
-  def step_3
-    puts
-    say_status "STEP 3", "Configuring Rails application"
-  end
+  say_step "Configuring Rails application"
 
   def change_config_files
     store_application_definition!
@@ -59,10 +63,12 @@ class Enginex < Thor::Group
     template "rails/application.rb", "test/dummy/config/application.rb", :force => true
   end
 
-  def step_4
-    puts
-    say_status "STEP 4", "Removing uneeded files"
+  def rails_3_beta_fix
+    inject_into_class "test/dummy/config/application.rb", "Application",
+      "    config.root = File.expand_path('../..', __FILE__)\n\n"
   end
+
+  say_step "Removing uneeded files"
 
   def remove_uneeded_rails_files
     inside "test/dummy" do
@@ -70,6 +76,9 @@ class Enginex < Thor::Group
       remove_file "db/seeds.rb"
       remove_file "doc"
       remove_file "Gemfile"
+      remove_file "public/images/rails.png"
+      remove_file "public/index.html"
+      remove_file "public/robots.txt"
       remove_file "Rakefile"
       remove_file "README"
       remove_file "test"
@@ -78,6 +87,10 @@ class Enginex < Thor::Group
   end
 
   protected
+
+    def self.banner
+      self_task.formatted_usage(self, false)
+    end
 
     def application_definition
       @application_definition ||= begin

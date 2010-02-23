@@ -2,7 +2,6 @@ require 'test_helper'
 
 class NagivationTest < ActionController::IntegrationTest
   test "truth" do
-    get "/"
-    assert_contain "Welcome to Rails"
+    assert_kind_of Dummy::Application, Rails.application
   end
 end
