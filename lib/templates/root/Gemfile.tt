@@ -1,7 +1,7 @@
 source "http://gemcutter.org"
 
 gem "rails", "<%= ActiveSupport::VERSION::STRING %>"
-<%= 'gem "webrat", "0.7"' unless bare? -%>
+gem "webrat", "0.7"
 
 if RUBY_VERSION < '1.9'
   gem "ruby-debug", ">= 0.10.3"

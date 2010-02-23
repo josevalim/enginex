@@ -16,9 +16,6 @@ class Enginex < Thor::Group
   argument :path, :type => :string,
                   :desc => "Path to the engine to be created"
 
-  class_option :bare, :type => :boolean, :default => false,
-                      :desc => "Skip vendored Rails application for testing"
-
   class_option :help, :type => :boolean, :aliases => "-h",
                       :desc => "Show this help message and quit"
 
@@ -30,11 +27,11 @@ class Enginex < Thor::Group
     FileUtils.cd(destination_root)
   end
 
-  protected
+  def copy_gitignore
+    copy_file "gitignore", ".gitignore"
+  end
 
-    def bare?
-      options.bare?
-    end
+  protected
 
     # Cache accessors since we are changing the directory
     def set_accessors!
