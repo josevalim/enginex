@@ -26,7 +26,7 @@ class ActiveSupport::TestCase
     $counter += 1
     `ruby -I#{LIB_PATH} -rrubygems #{BIN_PATH} #{destination_root}`
     yield
-    FileUtils.rm_rf(File.basename(destination_root))
+    FileUtils.rm_rf(File.dirname(destination_root))
   rescue Exception => e
     puts "Error happened. #{destination_root.inspect} left for inspecting."
     raise e
