@@ -4,7 +4,6 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 require File.join(File.dirname(__FILE__), 'lib', 'enginex')
 
-desc 'Run Enginex unit tests.'
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
   t.libs << 'test'
@@ -12,7 +11,6 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = true
 end
 
-desc 'Generate documentation for Enginex.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'Enginex'
