@@ -2,8 +2,8 @@
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
+require 'rake/gempackagetask'
 
-desc 'Run <%= camelized %> unit tests.'
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
   t.libs << 'test'
@@ -11,7 +11,6 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = true
 end
 
-desc 'Generate documentation for <%= camelized %>.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = '<%= camelized %>'
@@ -28,5 +27,10 @@ spec = Gem::Specification.new do |s|
   s.version = "0.0.1"
 end
 
-desc 'Package <%= camelized %>'
-Rake::GemPackageTask.new(spec)
+Rake::GemPackageTask.new(spec) do |pkg|
+end
+
+desc "Install the gem #{spec.name}-#{spec.version}.gem"
+task :install do
+  system("gem install pkg/#{spec.name}-#{spec.version}.gem --no-ri --no-rdoc")
+end
