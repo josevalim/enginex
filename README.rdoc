@@ -1,0 +1,14 @@
+== Enginex
+
+This is a tool which creates a Rails 3 Engine with Rakefile, Gemfile and a ready to run test suite on top of a vendored Rails application.
+
+This is used in José Valim's upcoming book for Rails 3.
+
+== Bugs and Feedback
+
+If you discover any bugs, feel free to send me a message or create an issue on GitHub tracker:
+
+http://github.com/josevalim
+http://github.com/josevalim/enginex/issues
+
+MIT License. Copyright 2010 José Valim. http://blog.plataformatec.com.br

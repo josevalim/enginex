@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+# -*- mode: ruby -*-
+
+require 'enginex'
+Enginex.start
