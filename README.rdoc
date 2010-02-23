@@ -4,6 +4,10 @@ This is a tool which creates a Rails 3 Engine with Rakefile, Gemfile and a ready
 
 This is used in José Valim's upcoming book for Rails 3.
 
+== Usage
+
+  $ enginex ENGINE_NAME
+
 == Bugs and Feedback
 
 If you discover any bugs, feel free to send me a message or create an issue on GitHub tracker:

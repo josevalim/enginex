@@ -31,8 +31,7 @@ class Enginex < Thor::Group
   argument :path, :type => :string,
                   :desc => "Path to the engine to be created"
 
-  class_option :help, :type => :boolean, :aliases => "-h",
-                      :desc => "Show this help message and quit"
+  desc "Creates a Rails 3 engine with Rakefile, Gemfile and running tests."
 
   say_step "Creating engine skeleton"
 
