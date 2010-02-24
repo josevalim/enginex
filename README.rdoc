@@ -2,7 +2,7 @@
 
 This is a tool which creates a Rails 3 Engine with Rakefile, Gemfile and a ready to run test suite on top of a vendored Rails application.
 
-This is used in José Valim's upcoming book for Rails 3.
+Enginex is going to be used in José Valim's upcoming book for Rails 3.
 
 == Usage
 
