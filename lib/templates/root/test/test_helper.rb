@@ -8,6 +8,8 @@ ActionMailer::Base.delivery_method = :test
 ActionMailer::Base.perform_deliveries = true
 ActionMailer::Base.default_url_options[:host] = "test.com"
 
+$:.unshift File.dirname(__FILE__)
+
 Webrat.configure do |config|
   config.mode = :rails
   config.open_error_files = false

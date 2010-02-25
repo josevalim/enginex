@@ -33,7 +33,7 @@ class Enginex < Thor::Group
 
   desc "Creates a Rails 3 engine with Rakefile, Gemfile and running tests."
 
-  say_step "Creating engine skeleton"
+  say_step "Creating gem skeleton"
 
   def create_root
     self.destination_root = File.expand_path(path, destination_root)
@@ -67,14 +67,14 @@ class Enginex < Thor::Group
       "    config.root = File.expand_path('../..', __FILE__)\n\n"
   end
 
-  say_step "Removing uneeded files"
+  say_step "Removing unneeded files"
 
   def remove_uneeded_rails_files
     inside "test/dummy" do
-      remove_file "config.ru"
       remove_file "db/seeds.rb"
       remove_file "doc"
       remove_file "Gemfile"
+      remove_file "lib/tasks"
       remove_file "public/images/rails.png"
       remove_file "public/index.html"
       remove_file "public/robots.txt"
