@@ -1,5 +1,6 @@
 .bundle/
-db/*.sqlite3
 log/*.log
-tmp/**/*
 pkg/
+test/dummy/db/*.sqlite3
+test/dummy/log/*.log
+test/dummy/tmp/
