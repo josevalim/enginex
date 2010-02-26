@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jos\303\251 Valim"]
-  s.date = %q{2010-02-25}
+  s.date = %q{2010-02-26}
   s.default_executable = %q{enginex}
   s.description = %q{Creates a Rails 3 engine with Rakefile, Gemfile and running tests}
   s.email = %q{jose.valim@plataformatec.com.br}
