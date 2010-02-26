@@ -65,6 +65,7 @@ class Enginex < Thor::Group
 
   def remove_uneeded_rails_files
     inside "test/dummy" do
+      remove_file ".gitignore"
       remove_file "db/seeds.rb"
       remove_file "doc"
       remove_file "Gemfile"
