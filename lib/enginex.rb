@@ -7,7 +7,6 @@ require "rails/generators"
 require "generators/rails/app/app_generator"
 
 # TODO Remove webrat hack file
-# TODO Remove Rails 3 application hack
 class Enginex < Thor::Group
   VERSION = "0.1.0".freeze
 
@@ -60,11 +59,6 @@ class Enginex < Thor::Group
     store_application_definition!
     template "rails/boot.rb", "test/dummy/config/boot.rb", :force => true
     template "rails/application.rb", "test/dummy/config/application.rb", :force => true
-  end
-
-  def rails_3_beta_fix
-    inject_into_class "test/dummy/config/application.rb", "Application",
-      "    config.root = File.expand_path('../..', __FILE__)\n\n"
   end
 
   say_step "Removing unneeded files"
