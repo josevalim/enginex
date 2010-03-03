@@ -8,7 +8,7 @@ require "generators/rails/app/app_generator"
 
 # TODO Remove webrat hack file
 class Enginex < Thor::Group
-  VERSION = "0.1.0".freeze
+  VERSION = "0.2.0".freeze
 
   include Thor::Actions
   check_unknown_options!

@@ -9,6 +9,7 @@ ActionMailer::Base.perform_deliveries = true
 ActionMailer::Base.default_url_options[:host] = "test.com"
 
 $:.unshift File.dirname(__FILE__)
+Rails.backtrace_cleaner.remove_silencers!
 
 Webrat.configure do |config|
   config.mode = :rails
