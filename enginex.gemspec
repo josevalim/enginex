@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{enginex}
-  s.version = "0.2.0"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jos\303\251 Valim"]
-  s.date = %q{2010-03-03}
+  s.date = %q{2010-03-17}
   s.default_executable = %q{enginex}
   s.description = %q{Creates a Rails 3 engine with Rakefile, Gemfile and running tests}
   s.email = %q{jose.valim@plataformatec.com.br}
@@ -30,13 +30,12 @@ Gem::Specification.new do |s|
      "lib/templates/root/lib/%underscored%.rb.tt",
      "lib/templates/root/test/%underscored%_test.rb.tt",
      "lib/templates/root/test/integration/navigation_test.rb.tt",
-     "lib/templates/root/test/test_helper.rb",
-     "lib/templates/root/test/webrat/integrations/rails.rb"
+     "lib/templates/root/test/test_helper.rb"
   ]
   s.homepage = %q{http://github.com/josevalim/enginex}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Creates a Rails 3 engine with Rakefile, Gemfile and running tests}
   s.test_files = [
     "test/enginex_test.rb",

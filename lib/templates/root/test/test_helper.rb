@@ -8,12 +8,9 @@ ActionMailer::Base.delivery_method = :test
 ActionMailer::Base.perform_deliveries = true
 ActionMailer::Base.default_url_options[:host] = "test.com"
 
-$:.unshift File.dirname(__FILE__)
 Rails.backtrace_cleaner.remove_silencers!
 
-Webrat.configure do |config|
-  config.mode = :rails
-  config.open_error_files = false
-end
+require "capybara/rails"
+Capybara.default_driver = :rack_test
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }

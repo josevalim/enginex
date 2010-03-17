@@ -5,7 +5,7 @@ class EnginexTest < ActiveSupport::TestCase
     run_enginex do
       # Root
       assert_file "Rakefile"
-      assert_file "Gemfile", /gem "rails"/, /gem "webrat"/
+      assert_file "Gemfile", /gem "rails"/, /gem "capybara"/
       assert_file ".gitignore", /\.bundle/, /db\/\*\.sqlite3/
 
       # Lib
@@ -21,6 +21,7 @@ class EnginexTest < ActiveSupport::TestCase
 
       # Vendored Rails
       assert_file "test/dummy/config/application.rb"
+      assert_file "test/dummy/config/environments/test.rb", /ActionDispatch::ShowExceptions/
     end
   end
 

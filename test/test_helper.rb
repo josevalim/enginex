@@ -6,6 +6,7 @@ rescue LoadError
 end
 
 ENV["RAILS_ENV"] ||= "test"
+require 'fileutils'
 require 'test/unit'
 require 'active_support'
 require 'active_support/test_case'
@@ -19,7 +20,6 @@ FileUtils.rm_rf(DESTINATION_ROOT)
 
 $:.unshift LIB_PATH
 require 'enginex'
-
 
 class ActiveSupport::TestCase
   def run_enginex

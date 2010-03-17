@@ -6,9 +6,8 @@ require "active_support/core_ext/string"
 require "rails/generators"
 require "generators/rails/app/app_generator"
 
-# TODO Remove webrat hack file
 class Enginex < Thor::Group
-  VERSION = "0.2.0".freeze
+  VERSION = "0.3.0".freeze
 
   include Thor::Actions
   check_unknown_options!
@@ -59,6 +58,12 @@ class Enginex < Thor::Group
     store_application_definition!
     template "rails/boot.rb", "test/dummy/config/boot.rb", :force => true
     template "rails/application.rb", "test/dummy/config/application.rb", :force => true
+    gsub_file "test/dummy/config/environments/test.rb", "end\n", <<-CONTENT
+
+  # Remove show exceptions middleware from tests, so we always Ruby failures.
+  config.middleware.delete "ActionDispatch::ShowExceptions"
+end
+    CONTENT
   end
 
   say_step "Removing unneeded files"
