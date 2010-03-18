@@ -29,7 +29,8 @@ class Enginex < Thor::Group
   argument :path, :type => :string,
                   :desc => "Path to the engine to be created"
 
-  class_option :test_framework, :default => :test_unit
+  class_option :test_framework, :default => "test_unit", :aliases => "-t",
+                                :desc => "Test framework to use. test_unit or rspec."
   
   desc "Creates a Rails 3 engine with Rakefile, Gemfile and running tests."
 
@@ -41,11 +42,10 @@ class Enginex < Thor::Group
 
     directory "root", "."
     FileUtils.cd(destination_root)
-    
-    inside path do
-      remove_file "spec" if test_unit?
-      remove_file "test" if rspec?
-    end
+  end
+
+  def create_tests_or_specs
+    directory test_path
   end
 
   def copy_gitignore
@@ -101,9 +101,13 @@ end
     def test_unit?
       options[:test_framework] == "test_unit"
     end
-    
+
+    def test_path
+      rspec? ? "spec" : "test"
+    end
+
     def dummy_path
-      rspec? ? 'spec/dummy' : 'test/dummy'
+      "#{test_path}/dummy"
     end
 
     def self.banner

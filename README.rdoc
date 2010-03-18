@@ -8,6 +8,8 @@ Enginex is going to be used in José Valim's upcoming book for Rails 3.
 
   $ enginex ENGINE_NAME
 
+Give --help to see supported options.
+
 == Bugs and Feedback
 
 If you discover any bugs, feel free to send me a message or create an issue on GitHub tracker:

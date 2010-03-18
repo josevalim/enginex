@@ -1,8 +1,15 @@
 # encoding: UTF-8
 require 'rake'
-require 'rake/testtask'
 require 'rake/rdoctask'
 require 'rake/gempackagetask'
+
+<% if rspec? -%>
+require 'rspec/core'
+require 'rspec/core/rake_task'
+
+Rspec::Core::RakeTask.new(:spec)
+<% else -%>
+require 'rake/testtask'
 
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
@@ -10,6 +17,9 @@ Rake::TestTask.new(:test) do |t|
   t.pattern = 'test/**/*_test.rb'
   t.verbose = false
 end
+<% end -%>
+
+task :default => :<%= test_path %>
 
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
@@ -34,25 +44,3 @@ desc "Install the gem #{spec.name}-#{spec.version}.gem"
 task :install do
   system("gem install pkg/#{spec.name}-#{spec.version}.gem --no-ri --no-rdoc")
 end
-
-<% if rspec? %>
-begin
-  require 'rspec/core'
-  require 'rspec/core/rake_task'
-rescue MissingSourceFile 
-end
-
-task :default => :spec
-
-desc "Run all specs in spec directory (excluding plugin specs)"
-Rspec::Core::RakeTask.new(:spec)
-
-namespace :spec do
-  [:requests, :models, :controllers, :views, :helpers, :mailers, :lib].each do |sub|
-    desc "Run the code examples in spec/#{sub}"
-    Rspec::Core::RakeTask.new do |t|
-      t.pattern = "./spec/#{sub}/**/*_spec.rb"
-    end
-  end
-end
-<% end %>
