@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jos\303\251 Valim"]
-  s.date = %q{2010-03-17}
+  s.date = %q{2010-03-18}
   s.default_executable = %q{enginex}
   s.description = %q{Creates a Rails 3 engine with Rakefile, Gemfile and running tests}
   s.email = %q{jose.valim@plataformatec.com.br}
@@ -28,9 +28,18 @@ Gem::Specification.new do |s|
      "lib/templates/root/Gemfile.tt",
      "lib/templates/root/Rakefile.tt",
      "lib/templates/root/lib/%underscored%.rb.tt",
+     "lib/templates/root/spec/%underscored%_spec.rb.tt",
+     "lib/templates/root/spec/integration/navigation_spec.rb.tt",
+     "lib/templates/root/spec/spec_helper.rb",
      "lib/templates/root/test/%underscored%_test.rb.tt",
      "lib/templates/root/test/integration/navigation_test.rb.tt",
-     "lib/templates/root/test/test_helper.rb"
+     "lib/templates/root/test/test_helper.rb",
+     "lib/templates/spec/%underscored%_spec.rb.tt",
+     "lib/templates/spec/integration/navigation_spec.rb.tt",
+     "lib/templates/spec/spec_helper.rb",
+     "lib/templates/test/%underscored%_test.rb.tt",
+     "lib/templates/test/integration/navigation_test.rb.tt",
+     "lib/templates/test/test_helper.rb"
   ]
   s.homepage = %q{http://github.com/josevalim/enginex}
   s.rdoc_options = ["--charset=UTF-8"]
