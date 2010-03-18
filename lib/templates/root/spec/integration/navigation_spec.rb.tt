@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Navigation" do
   include Capybara
   
-  it "should " do
-    Dummy::Application.should be_a(Rails.application)
+  it "should be a valid app" do
+    ::Rails.application.should be_a(Dummy::Application)
   end
 end

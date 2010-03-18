@@ -41,7 +41,7 @@ class EnginexTest < ActiveSupport::TestCase
       assert_directory "spec/integration/"
 
       assert_file "spec/demo_engine_spec.rb", /DemoEngine.should be_a\(Module\)/
-      assert_file "spec/integration/navigation_spec.rb", /Dummy::Application.should be_a\(Rails.application\)/
+      assert_file "spec/integration/navigation_spec.rb", /Rails.application.should be_a\(Dummy::Application\)/
 
       # Vendored Rails
       assert_file "spec/dummy/config/application.rb"
@@ -64,7 +64,7 @@ class EnginexTest < ActiveSupport::TestCase
   
   test "enginex can run specs" do
     run_enginex(:rspec) do
-      assert_match /2 tests, 2 assertions, 0 failures, 0 errors/, execute("spec spec")
+      assert_match /2 examples, 0 failures/, execute("rake spec")
     end
   end
 end

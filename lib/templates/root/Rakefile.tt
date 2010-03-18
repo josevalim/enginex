@@ -34,3 +34,25 @@ desc "Install the gem #{spec.name}-#{spec.version}.gem"
 task :install do
   system("gem install pkg/#{spec.name}-#{spec.version}.gem --no-ri --no-rdoc")
 end
+
+<% if rspec? %>
+begin
+  require 'rspec/core'
+  require 'rspec/core/rake_task'
+rescue MissingSourceFile 
+end
+
+task :default => :spec
+
+desc "Run all specs in spec directory (excluding plugin specs)"
+Rspec::Core::RakeTask.new(:spec)
+
+namespace :spec do
+  [:requests, :models, :controllers, :views, :helpers, :mailers, :lib].each do |sub|
+    desc "Run the code examples in spec/#{sub}"
+    Rspec::Core::RakeTask.new do |t|
+      t.pattern = "./spec/#{sub}/**/*_spec.rb"
+    end
+  end
+end
+<% end %>
