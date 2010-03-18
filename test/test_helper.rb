@@ -22,9 +22,15 @@ $:.unshift LIB_PATH
 require 'enginex'
 
 class ActiveSupport::TestCase
-  def run_enginex
+  def run_enginex(suite = :test_unit)
+    if suite == :rspec
+      option = '--test-framework=rspec'
+    else
+      option = '--test-framework=test_unit'
+    end
+
     $counter += 1
-    `ruby -I#{LIB_PATH} -rrubygems #{BIN_PATH} #{destination_root}`
+    `ruby -I#{LIB_PATH} -rrubygems #{BIN_PATH} #{destination_root} #{option}`
     yield
     FileUtils.rm_rf(File.dirname(destination_root))
   rescue Exception => e

@@ -1,0 +1,9 @@
+require 'spec_helper'
+
+describe "Navigation" do
+  include Capybara
+  
+  it "should " do
+    Dummy::Application.should be_a(Rails.application)
+  end
+end

@@ -29,6 +29,8 @@ class Enginex < Thor::Group
   argument :path, :type => :string,
                   :desc => "Path to the engine to be created"
 
+  class_option :test_framework, :default => :test_unit
+  
   desc "Creates a Rails 3 engine with Rakefile, Gemfile and running tests."
 
   say_step "Creating gem skeleton"
@@ -39,6 +41,11 @@ class Enginex < Thor::Group
 
     directory "root", "."
     FileUtils.cd(destination_root)
+    
+    inside path do
+      remove_file "spec" if test_unit?
+      remove_file "test" if rspec?
+    end
   end
 
   def copy_gitignore
@@ -49,16 +56,16 @@ class Enginex < Thor::Group
 
   def invoke_rails_app_generator
     invoke Rails::Generators::AppGenerator,
-      [ File.expand_path("test/dummy", destination_root) ]
+      [ File.expand_path(dummy_path, destination_root) ]
   end
 
   say_step "Configuring Rails application"
 
   def change_config_files
     store_application_definition!
-    template "rails/boot.rb", "test/dummy/config/boot.rb", :force => true
-    template "rails/application.rb", "test/dummy/config/application.rb", :force => true
-    gsub_file "test/dummy/config/environments/test.rb", "end\n", <<-CONTENT
+    template "rails/boot.rb", "#{dummy_path}/config/boot.rb", :force => true
+    template "rails/application.rb", "#{dummy_path}/config/application.rb", :force => true
+    gsub_file "#{dummy_path}/config/environments/test.rb", "end\n", <<-CONTENT
 
   # Remove show exceptions middleware from tests, so we always Ruby failures.
   config.middleware.delete "ActionDispatch::ShowExceptions"
@@ -69,7 +76,7 @@ end
   say_step "Removing unneeded files"
 
   def remove_uneeded_rails_files
-    inside "test/dummy" do
+    inside dummy_path do
       remove_file ".gitignore"
       remove_file "db/seeds.rb"
       remove_file "doc"
@@ -87,13 +94,25 @@ end
 
   protected
 
+    def rspec?
+      options[:test_framework] == "rspec"
+    end
+
+    def test_unit?
+      options[:test_framework] == "test_unit"
+    end
+    
+    def dummy_path
+      rspec? ? 'spec/dummy' : 'test/dummy'
+    end
+
     def self.banner
       self_task.formatted_usage(self, false)
     end
 
     def application_definition
       @application_definition ||= begin
-        contents = File.read(File.expand_path("test/dummy/config/application.rb", destination_root))
+        contents = File.read(File.expand_path("#{dummy_path}/config/application.rb", destination_root))
         contents[(contents.index("module Dummy"))..-1]
       end
     end
