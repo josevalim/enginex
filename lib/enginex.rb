@@ -4,7 +4,7 @@ require "active_support/version"
 require "active_support/core_ext/string"
 
 require "rails/generators"
-require "generators/rails/app/app_generator"
+require "rails/generators/rails/app/app_generator"
 
 class Enginex < Thor::Group
   VERSION = "0.3.0".freeze

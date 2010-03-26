@@ -23,7 +23,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name = "enginex"
-    s.version = Enginex::VERSION
+    s.version = Enginex::VERSION.dup
     s.summary = "Creates a Rails 3 engine with Rakefile, Gemfile and running tests"
     s.email = "jose.valim@plataformatec.com.br"
     s.homepage = "http://github.com/josevalim/enginex"
