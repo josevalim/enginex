@@ -1,7 +1,7 @@
 source "http://gemcutter.org"
 
 gem "rails", "<%= ActiveSupport::VERSION::STRING %>"
-gem "capybara", "0.3.5"
+gem "capybara", "0.3.6"
 gem "sqlite3-ruby", :require => "sqlite3"
 
 if RUBY_VERSION < '1.9'
