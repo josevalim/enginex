@@ -85,7 +85,6 @@ end
       remove_file "public/images/rails.png"
       remove_file "public/index.html"
       remove_file "public/robots.txt"
-      remove_file "Rakefile"
       remove_file "README"
       remove_file "test"
       remove_file "vendor"
