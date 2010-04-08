@@ -11,6 +11,7 @@ ActionMailer::Base.default_url_options[:host] = "test.com"
 Rails.backtrace_cleaner.remove_silencers!
 
 require "capybara/rails"
-Capybara.default_driver = :rack_test
+Capybara.default_driver   = :rack_test
+Capybara.default_selector = :css
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
