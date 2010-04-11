@@ -7,7 +7,7 @@ require "rails/generators"
 require "rails/generators/rails/app/app_generator"
 
 class Enginex < Thor::Group
-  VERSION = "0.5.2".freeze
+  VERSION = "0.5.3".freeze
 
   include Thor::Actions
   check_unknown_options!
@@ -65,12 +65,6 @@ class Enginex < Thor::Group
     store_application_definition!
     template "rails/boot.rb", "#{dummy_path}/config/boot.rb", :force => true
     template "rails/application.rb", "#{dummy_path}/config/application.rb", :force => true
-    gsub_file "#{dummy_path}/config/environments/test.rb", "end\n", <<-CONTENT
-
-  # Remove show exceptions middleware from tests, so we always Ruby failures.
-  config.middleware.delete "ActionDispatch::ShowExceptions"
-end
-    CONTENT
   end
 
   say_step "Removing unneeded files"
