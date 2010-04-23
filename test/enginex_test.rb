@@ -12,8 +12,8 @@ class EnginexTest < ActiveSupport::TestCase
       assert_file "lib/demo_engine.rb", /module DemoEngine\nend/
 
       # Vendored Rails
+      assert_file "test/dummy/config/boot.rb"
       assert_file "test/dummy/config/application.rb"
-      assert_file "test/dummy/config/environments/test.rb", /ActionDispatch::ShowExceptions/
     end
   end
 
@@ -25,6 +25,7 @@ class EnginexTest < ActiveSupport::TestCase
 
       assert_file "test/demo_engine_test.rb", /assert_kind_of Module, DemoEngine/
       assert_file "test/integration/navigation_test.rb", /assert_kind_of Dummy::Application, Rails.application/
+      assert_file "test/support/integration_case.rb", /class ActiveSupport::IntegrationCase/
     end
   end
 
