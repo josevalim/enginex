@@ -32,7 +32,7 @@ begin
     s.files =  FileList["[A-Z]*", "lib/**/*"]
     s.bindir = "bin"
     s.executables = %w(enginex)
-    s.add_dependency("thor", "~> 0.13.0")
+    s.add_dependency("thor", "~> 0.13.6")
     s.add_dependency("bundler", "~> 0.9.0")
     s.add_dependency("rails", "~> 3.0.0")
     s.add_dependency("rake", "~> 0.8")
