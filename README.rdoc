@@ -1,6 +1,6 @@
 == Enginex
 
-This is a tool which creates a Rails 3 Engine with Rakefile, Gemfile and a ready to run test suite on top of a vendored Rails application.
+Enginex is a command line tool which creates a Rails 3 Engine with Rakefile, Gemfile and a ready to run test suite on top of a vendored Rails application.
 
 Enginex is going to be used in José Valim's upcoming book for Rails 3.
 
