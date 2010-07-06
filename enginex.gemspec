@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jos\303\251 Valim"]
-  s.date = %q{2010-06-28}
+  s.date = %q{2010-07-06}
   s.default_executable = %q{enginex}
   s.description = %q{Creates a Rails 3 engine with Rakefile, Gemfile and running tests}
   s.email = %q{jose.valim@plataformatec.com.br}
@@ -54,18 +54,15 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<thor>, ["~> 0.13.6"])
-      s.add_runtime_dependency(%q<bundler>, ["~> 0.9.0"])
       s.add_runtime_dependency(%q<rails>, ["~> 3.0.0"])
       s.add_runtime_dependency(%q<rake>, ["~> 0.8"])
     else
       s.add_dependency(%q<thor>, ["~> 0.13.6"])
-      s.add_dependency(%q<bundler>, ["~> 0.9.0"])
       s.add_dependency(%q<rails>, ["~> 3.0.0"])
       s.add_dependency(%q<rake>, ["~> 0.8"])
     end
   else
     s.add_dependency(%q<thor>, ["~> 0.13.6"])
-    s.add_dependency(%q<bundler>, ["~> 0.9.0"])
     s.add_dependency(%q<rails>, ["~> 3.0.0"])
     s.add_dependency(%q<rake>, ["~> 0.8"])
   end

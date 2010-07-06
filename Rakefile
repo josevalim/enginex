@@ -33,12 +33,11 @@ begin
     s.bindir = "bin"
     s.executables = %w(enginex)
     s.add_dependency("thor", "~> 0.13.6")
-    s.add_dependency("bundler", "~> 0.9.0")
     s.add_dependency("rails", "~> 3.0.0")
     s.add_dependency("rake", "~> 0.8")
   end
 
   Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler, or one of its dependencies, is not available. Install it with: sudo gem install jeweler"
+  puts "Jeweler, or one of its dependencies, is not available. Install it with: gem install jeweler"
 end
