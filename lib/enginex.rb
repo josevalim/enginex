@@ -7,7 +7,7 @@ require "rails/generators"
 require "rails/generators/rails/app/app_generator"
 
 class Enginex < Thor::Group
-  VERSION = "0.6.2".freeze
+  VERSION = "0.6.3".freeze
 
   include Thor::Actions
   check_unknown_options!
