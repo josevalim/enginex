@@ -2,4 +2,7 @@
 # -*- mode: ruby -*-
 
 require 'enginex'
+
+ARGV << "--help" if ARGV.empty?
+
 Enginex.start
