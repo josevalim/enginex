@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # -*- mode: ruby -*-
 
-require 'enginex'
+require File.expand_path(File.join(*%w[.. .. lib enginex]), __FILE__)
+
 Enginex.start
