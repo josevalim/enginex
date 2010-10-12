@@ -42,8 +42,8 @@ class EnginexTest < ActiveSupport::TestCase
 
   test "enginex rakefile can create a gem" do
     run_enginex do
-      execute("rake gem")
-      assert_file "pkg/demo_engine-0.0.1.gem"
+      execute("gem build demo_engine.gemspec")
+      assert_file "demo_engine-0.0.1.gem"
     end
   end
 
