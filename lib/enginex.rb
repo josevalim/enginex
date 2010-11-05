@@ -29,8 +29,9 @@ class Enginex < Thor::Group
   argument :path, :type => :string,
                   :desc => "Path to the engine to be created"
 
-  class_option :test_framework, :default => "test_unit", :aliases => "-t",
-                                :desc => "Test framework to use. test_unit or rspec."
+  class_option :test_frameworks, :default => "test_unit", :aliases => "-t",
+                                :desc => "Test framework to use. test_unit or rspec.",
+                                :type => :array
   
   desc "Creates a Rails 3 engine with Rakefile, Gemfile and running tests."
 
@@ -46,6 +47,18 @@ class Enginex < Thor::Group
 
   def create_tests_or_specs
     directory test_path
+  end
+
+  def create_features
+    if cucumber?
+      template "features/support/env.rb", "#{destination_root}/features/support/env.rb"
+
+      web_steps = "features/step_definitions/web_steps.rb"
+      paths = "features/support/paths.rb"
+
+      copy_file web_steps, web_steps
+      copy_file paths, paths
+    end
   end
 
   def copy_gitignore
@@ -88,11 +101,15 @@ class Enginex < Thor::Group
   protected
 
     def rspec?
-      options[:test_framework] == "rspec"
+      options[:test_frameworks].include?("rspec")
     end
 
     def test_unit?
-      options[:test_framework] == "test_unit"
+      options[:test_frameworks].include?("test_unit")
+    end
+
+    def cucumber?
+      options[:test_frameworks].include?("cucumber")
     end
 
     def test_path

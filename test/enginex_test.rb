@@ -40,6 +40,25 @@ class EnginexTest < ActiveSupport::TestCase
     end
   end
 
+  test "enginex skeleton with cucumber and rspec" do
+    run_enginex(:rspec, :cucumber) do
+      assert_file "features/support/env.rb", "../../../spec/dummy/config/environment.rb"
+      assert_file "features/support/env.rb", /require 'cucumber\/rails\/rspec'/
+      assert_file "features/step_definitions/web_steps.rb"
+      assert_file "Gemfile", "gem \"cucumber-rails\""
+    end
+  end
+
+  test "enginex skeleton with cucumber and test_unit" do
+    run_enginex(:cucumber) do
+      assert_file "features/support/env.rb", "../../../test/dummy/config/environment.rb"
+      assert_file "features/support/env.rb" do |env|
+        assert_no_match /require 'cucumber\/rails\/rspec'/, env
+      end
+      assert_file "features/step_definitions/web_steps.rb"
+    end
+  end
+
   test "enginex rakefile can create a gem" do
     run_enginex do
       execute("gem build demo_engine.gemspec")

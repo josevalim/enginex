@@ -11,3 +11,7 @@ end
 <% if rspec? %>
 gem "rspec-rails", ">= 2.0.0.beta"
 <% end %>
+
+<% if cucumber? %>
+gem "cucumber-rails"
+<% end %>
