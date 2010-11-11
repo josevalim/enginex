@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{enginex}
-  s.version = "0.7.0"
+  s.version = "0.7.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jos\303\251 Valim"]
-  s.date = %q{2010-10-12}
+  s.date = %q{2010-11-11}
   s.default_executable = %q{enginex}
   s.description = %q{Creates a Rails 3 engine with Rakefile, Gemfile and running tests}
   s.email = %q{jose.valim@plataformatec.com.br}
