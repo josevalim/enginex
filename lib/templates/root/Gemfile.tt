@@ -4,7 +4,7 @@ gem "rails", "<%= ActiveSupport::VERSION::STRING %>"
 gem "capybara", ">= 0.4.0"
 gem "sqlite3-ruby", :require => "sqlite3"
 
-if RUBY_VERSION < '1.9'
+platforms :mri_18 do
   gem "ruby-debug", ">= 0.10.3"
 end
 
