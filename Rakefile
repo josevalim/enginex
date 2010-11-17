@@ -33,7 +33,7 @@ begin
     s.bindir = "bin"
     s.executables = %w(enginex)
     s.add_dependency("thor", "~> 0.14.0")
-    s.add_dependency("rails", "~> 3.0.0")
+    s.add_dependency("rails", "~> 3.0")
     s.add_dependency("rake", "~> 0.8")
   end
 

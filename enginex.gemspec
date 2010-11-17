@@ -55,16 +55,16 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<thor>, ["~> 0.14.0"])
-      s.add_runtime_dependency(%q<rails>, ["~> 3.0.0"])
+      s.add_runtime_dependency(%q<rails>, ["~> 3.0"])
       s.add_runtime_dependency(%q<rake>, ["~> 0.8"])
     else
       s.add_dependency(%q<thor>, ["~> 0.14.0"])
-      s.add_dependency(%q<rails>, ["~> 3.0.0"])
+      s.add_dependency(%q<rails>, ["~> 3.0"])
       s.add_dependency(%q<rake>, ["~> 0.8"])
     end
   else
     s.add_dependency(%q<thor>, ["~> 0.14.0"])
-    s.add_dependency(%q<rails>, ["~> 3.0.0"])
+    s.add_dependency(%q<rails>, ["~> 3.0"])
     s.add_dependency(%q<rake>, ["~> 0.8"])
   end
 end
