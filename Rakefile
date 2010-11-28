@@ -2,7 +2,6 @@
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
-require File.join(File.dirname(__FILE__), 'lib', 'enginex')
 
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
@@ -23,7 +22,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name = "enginex"
-    s.version = Enginex::VERSION.dup
+    s.version = "0.7.2"
     s.summary = "Creates a Rails 3 engine with Rakefile, Gemfile and running tests"
     s.email = "jose.valim@plataformatec.com.br"
     s.homepage = "http://github.com/josevalim/enginex"
@@ -33,7 +32,7 @@ begin
     s.bindir = "bin"
     s.executables = %w(enginex)
     s.add_dependency("thor", "~> 0.14.0")
-    s.add_dependency("rails", "~> 3.0")
+    s.add_dependency("rails", "~> 3.0.3")
     s.add_dependency("rake", "~> 0.8")
   end
 
