@@ -46,8 +46,8 @@ class Enginex < Thor::Group
     directory test_path
   end
 
-  def copy_gitignore
-    copy_file "gitignore", ".gitignore"
+  def change_gitignore
+    template "gitignore", ".gitignore"
   end
 
   say_step "Vendoring Rails application at test/dummy"
