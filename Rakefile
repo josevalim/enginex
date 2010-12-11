@@ -22,7 +22,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name = "enginex"
-    s.version = "0.7.2"
+    s.version = "0.8.0"
     s.summary = "Creates a Rails 3 engine with Rakefile, Gemfile and running tests"
     s.email = "jose.valim@plataformatec.com.br"
     s.homepage = "http://github.com/josevalim/enginex"
@@ -31,7 +31,7 @@ begin
     s.files =  FileList["[A-Z]*", "lib/**/*"]
     s.bindir = "bin"
     s.executables = %w(enginex)
-    s.add_dependency("thor", "~> 0.14.0")
+    s.add_dependency("thor", "~> 0.14")
     s.add_dependency("rails", "~> 3.0.3")
     s.add_dependency("rake", "~> 0.8")
   end
