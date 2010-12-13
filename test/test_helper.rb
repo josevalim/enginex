@@ -22,7 +22,7 @@ $:.unshift LIB_PATH
 require 'enginex'
 
 class ActiveSupport::TestCase
-  def run_enginex(suite = :test_unit)
+  def run_enginex(suite = :test_unit, rails_options="")
     if suite == :rspec
       option = '--test-framework=rspec'
     else
@@ -30,7 +30,7 @@ class ActiveSupport::TestCase
     end
 
     $counter += 1
-    `ruby -I#{LIB_PATH} -rrubygems #{BIN_PATH} #{destination_root} #{option}`
+    `ruby -I#{LIB_PATH} -rrubygems #{BIN_PATH} #{destination_root} #{option} #{rails_options}`
     yield
     FileUtils.rm_rf(File.dirname(destination_root))
   rescue Exception => e
