@@ -2,13 +2,8 @@ PATH
   remote: .
   specs:
     enginex (0.8.0)
-      capybara (~> 0.4)
-      enginex
       rails (~> 3.0.3)
       rake (~> 0.8)
-      rspec (~> 2.0)
-      rspec-rails (~> 2.0)
-      sqlite3
       thor (~> 0.14)
 
 GEM
