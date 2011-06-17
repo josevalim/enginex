@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require 'rake'
 require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rdoc/task'
 
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
