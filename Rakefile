@@ -1,7 +1,17 @@
 # encoding: UTF-8
+
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
+require 'appraisal'
+
+desc "Default: run the specs"
+task :default => [:all]
+
+desc 'Test the plugin under all supported Rails versions.'
+task :all => ["appraisal:install"] do |t|
+  exec('rake appraisal test')
+end
 
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
