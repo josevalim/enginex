@@ -5,4 +5,4 @@ gemspec
 gem "sqlite3"
 gem "rspec", "~> 2.0"
 gem "rspec-rails", "~> 2.0"
-gem "capybara", "~> 0.4"
+gem "capybara", "1.0.0"
