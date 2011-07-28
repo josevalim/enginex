@@ -62,4 +62,11 @@ class EnginexTest < ActiveSupport::TestCase
       assert_match /2 examples, 0 failures/, execute("rake spec")
     end
   end
+
+  test "enginex can pass options to rails application generator" do
+    run_enginex(:rspec, "-J -O") do
+      assert_no_file "spec/dummy/config/database.yml"
+      assert_no_file "spec/dummy/public/javascripts/prototype.js"
+    end
+  end
 end

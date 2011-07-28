@@ -29,7 +29,17 @@ class Enginex < Thor::Group
 
   class_option :test_framework, :default => "test_unit", :aliases => "-t",
                                 :desc => "Test framework to use. test_unit or rspec."
-  
+  see_rails_text = "option passed to test Rails application generator, see 'rails new --help' for help"
+  class_option :"skip-active-record", :aliases => "-O", :desc => see_rails_text
+  class_option :"skip-prototype", :aliases => "-J", :desc => see_rails_text
+  class_option :edge, :desc => see_rails_text
+  class_option :dev, :desc => see_rails_text
+  class_option :template, :aliases => "-m", :desc => see_rails_text
+  class_option :builder, :aliases => "-b", :desc => see_rails_text
+  class_option :database, :aliases => "-d", :desc => see_rails_text
+  class_option :ruby, :aliases => "-r", :desc => see_rails_text
+  class_option :"skip-git", :aliases => "-G", :desc => see_rails_text
+
   desc "Creates a Rails 3 engine with Rakefile, Gemfile and running tests."
 
   say_step "Creating gem skeleton"
