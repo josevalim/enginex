@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EnginexTest < ActiveSupport::TestCase
+class EnginexTest < Enginex::TestCase
   test "enginex skeleton" do
     run_enginex do
       # Root
@@ -16,6 +16,14 @@ class EnginexTest < ActiveSupport::TestCase
       assert_file "test/dummy/config/application.rb"
     end
   end
+
+  test "enginex skeleton with dashes in name" do
+    @project_name = "demo-engine"
+    run_enginex do
+      assert_file "lib/demo_engine.rb", /module DemoEngine\nend/
+    end
+  end
+
 
   test "enginex skeleton with test_unit" do
     run_enginex do

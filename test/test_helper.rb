@@ -1,9 +1,7 @@
 require 'rubygems'
 
-begin
-  gem "test-unit"
-rescue LoadError
-end
+require 'bundler'
+Bundler.setup
 
 ENV["RAILS_ENV"] ||= "test"
 require 'fileutils'
@@ -11,7 +9,7 @@ require 'test/unit'
 require 'active_support'
 require 'active_support/test_case'
 
-$counter = 0
+$enginex_counter = 0
 LIB_PATH = File.expand_path('../../lib', __FILE__)
 BIN_PATH = File.expand_path('../../bin/enginex', __FILE__)
 
@@ -21,7 +19,7 @@ FileUtils.rm_rf(DESTINATION_ROOT)
 $:.unshift LIB_PATH
 require 'enginex'
 
-class ActiveSupport::TestCase
+class Enginex::TestCase < ActiveSupport::TestCase  
   def run_enginex(suite = :test_unit)
     if suite == :rspec
       option = '--test-framework=rspec'
@@ -29,17 +27,22 @@ class ActiveSupport::TestCase
       option = '--test-framework=test_unit'
     end
 
-    $counter += 1
+    $enginex_counter += 1
     `ruby -I#{LIB_PATH} -rrubygems #{BIN_PATH} #{destination_root} #{option}`
     yield
-    FileUtils.rm_rf(File.dirname(destination_root))
   rescue Exception => e
     puts "Error happened. #{destination_root.inspect} left for inspecting."
     raise e
+  ensure
+    FileUtils.rm_rf(File.dirname(destination_root))
+  end
+
+  def project_name
+    @project_name ||= "demo_engine"
   end
 
   def destination_root
-    File.join(DESTINATION_ROOT, $counter.to_s, "demo_engine")
+    File.join(DESTINATION_ROOT, $enginex_counter.to_s, project_name)
   end
 
   def capture(stream)
