@@ -124,7 +124,7 @@ class Enginex < Thor::Group
     end
 
     def camelized
-      @camelized ||= name.camelize
+      @camelized ||= name.underscore.camelize
     end
 
     def underscored
