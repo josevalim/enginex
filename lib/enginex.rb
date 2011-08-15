@@ -130,4 +130,14 @@ class Enginex < Thor::Group
     def underscored
       @underscored ||= name.underscore
     end
+    
+    def author_name
+      @git_author_name ||= `git config user.name`.chomp
+      @author_name ||= @git_author_name.empty? ? 'Author name here.' : @git_author_name
+    end
+    
+    def author_email
+      @git_author_email ||= `git config user.email`.chomp
+      @author_email ||= @git_author_email.empty? ? 'Author email here.' : @git_author_email
+    end
 end
