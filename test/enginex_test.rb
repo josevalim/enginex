@@ -5,8 +5,9 @@ class EnginexTest < Enginex::TestCase
     run_enginex do
       # Root
       assert_file "Rakefile"
-      assert_file "Gemfile", /gem "rails"/, /gem "capybara"/
+      assert_file "Gemfile", /gem "rails"/, /gem "capybara"/, /gem "rdoc"/
       assert_file ".gitignore", /\.bundle/
+      assert_file "Rakefile", /require 'rdoc\/task'/
 
       # Lib
       assert_file "lib/demo_engine.rb", /module DemoEngine\nend/
