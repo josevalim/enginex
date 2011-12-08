@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require 'rake'
 require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rdoc/task'
 
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
@@ -10,7 +10,7 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = true
 end
 
-Rake::RDocTask.new(:rdoc) do |rdoc|
+RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'Enginex'
   rdoc.options << '--line-numbers' << '--inline-source'
