@@ -4,7 +4,7 @@ Enginex is a command line tool which creates a Rails 3 Engine with Rakefile, Gem
 
 Enginex was created for the purpose of and used in José Valim's book: Crafting Rails Applications available at http://plataformatec.com.br/crafting-rails-applications .
 
-Enginex will be available on Rails 3.1 as the new plugin generator and invoked as: "rails plugin new". The port to Rails was made by Piotr Sarnacki.
+Enginex is only available for Rails 3.0. For Rails 3.1 onwards, Enginex was ported to Rails as `rails plugin new` by Piotr Sarnacki.
 
 == Usage
 
