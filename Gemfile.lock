@@ -7,7 +7,7 @@ PATH
       thor (~> 0.14)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     abstract (1.0.0)
     actionmailer (3.0.4)
@@ -57,7 +57,7 @@ GEM
     ffi (0.6.3)
       rake (>= 0.8.7)
     i18n (0.5.0)
-    json (1.6.3)
+    json (1.8.6)
     json_pure (1.5.1)
     mail (2.2.19)
       activesupport (>= 2.3.6)
