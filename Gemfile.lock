@@ -7,7 +7,7 @@ PATH
       thor (~> 0.14)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     abstract (1.0.0)
     actionmailer (3.0.4)
@@ -65,7 +65,9 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    nokogiri (1.4.4)
+    mini_portile2 (2.4.0)
+    nokogiri (1.10.4)
+      mini_portile2 (~> 2.4.0)
     polyglot (0.3.2)
     rack (1.2.1)
     rack-mount (0.6.13)
